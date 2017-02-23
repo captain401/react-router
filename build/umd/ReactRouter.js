@@ -2315,23 +2315,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(4);
 	var assign = __webpack_require__(3);
-	var warning = __webpack_require__(7);
 	var DefaultRoute = __webpack_require__(1);
 	var NotFoundRoute = __webpack_require__(18);
 	var Redirect = __webpack_require__(19);
 	var Route = __webpack_require__(5);
-
-	function checkPropTypes(componentName, propTypes, props) {
-	  componentName = componentName || 'UnknownComponent';
-
-	  for (var propName in propTypes) {
-	    if (propTypes.hasOwnProperty(propName)) {
-	      var error = propTypes[propName](props, propName, componentName);
-
-	      if (error instanceof Error) warning(false, error.message);
-	    }
-	  }
-	}
 
 	function createRouteOptions(props) {
 	  var options = assign({}, props);
@@ -2350,8 +2337,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var type = element.type;
 	  var props = assign({}, type.defaultProps, element.props);
-
-	  if (type.propTypes) checkPropTypes(type.displayName, type.propTypes, props);
 
 	  if (type === DefaultRoute) return Route.createDefaultRoute(createRouteOptions(props));
 
